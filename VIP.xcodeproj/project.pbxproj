@@ -12,9 +12,11 @@
 		607E2F9E2492B5D1003AB9EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607E2F9D2492B5D1003AB9EA /* ViewController.swift */; };
 		607E2FA32492B5D2003AB9EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607E2FA22492B5D2003AB9EA /* Assets.xcassets */; };
 		607E2FA62492B5D2003AB9EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607E2FA42492B5D2003AB9EA /* LaunchScreen.storyboard */; };
+		9A1FBF998EED40D355604A1C /* Pods_VIP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF65A5DDD3D999096560EB22 /* Pods_VIP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10CE49CB304F844BECC55710 /* Pods-VIP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIP.release.xcconfig"; path = "Target Support Files/Pods-VIP/Pods-VIP.release.xcconfig"; sourceTree = "<group>"; };
 		607E2F962492B5D1003AB9EA /* VIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607E2F992492B5D1003AB9EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607E2F9B2492B5D1003AB9EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		607E2FA22492B5D2003AB9EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		607E2FA52492B5D2003AB9EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		607E2FA72492B5D2003AB9EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		707AD3B45529724633EE9D66 /* Pods-VIP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VIP.debug.xcconfig"; path = "Target Support Files/Pods-VIP/Pods-VIP.debug.xcconfig"; sourceTree = "<group>"; };
+		CF65A5DDD3D999096560EB22 /* Pods_VIP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VIP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A1FBF998EED40D355604A1C /* Pods_VIP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41D377550FC2C683062511EF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				707AD3B45529724633EE9D66 /* Pods-VIP.debug.xcconfig */,
+				10CE49CB304F844BECC55710 /* Pods-VIP.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		506F700C7AF559FC7D7EC515 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF65A5DDD3D999096560EB22 /* Pods_VIP.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		607E2F8D2492B5D1003AB9EA = {
 			isa = PBXGroup;
 			children = (
 				607E2F982492B5D1003AB9EA /* VIP */,
 				607E2F972492B5D1003AB9EA /* Products */,
+				41D377550FC2C683062511EF /* Pods */,
+				506F700C7AF559FC7D7EC515 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +96,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607E2FAA2492B5D2003AB9EA /* Build configuration list for PBXNativeTarget "VIP" */;
 			buildPhases = (
+				5ADFCD449F720725399C3F4A /* [CP] Check Pods Manifest.lock */,
 				607E2F922492B5D1003AB9EA /* Sources */,
 				607E2F932492B5D1003AB9EA /* Frameworks */,
 				607E2F942492B5D1003AB9EA /* Resources */,
+				5869C040AD21227CD78D3BC8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,6 +155,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5869C040AD21227CD78D3BC8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VIP/Pods-VIP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VIP/Pods-VIP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VIP/Pods-VIP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5ADFCD449F720725399C3F4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VIP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		607E2F922492B5D1003AB9EA /* Sources */ = {
@@ -270,6 +339,7 @@
 		};
 		607E2FAB2492B5D2003AB9EA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 707AD3B45529724633EE9D66 /* Pods-VIP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +357,7 @@
 		};
 		607E2FAC2492B5D2003AB9EA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10CE49CB304F844BECC55710 /* Pods-VIP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
