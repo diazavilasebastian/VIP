@@ -9,7 +9,7 @@
 import UIKit
 import iOSMovieDB
 
-protocol MoviesViewModel {
+protocol MoviesViewModelProtocol {
     var presenter: MoviePresenter { get }
     var interactor: MovieInteractor { get }
     var dataSource: MoviesDataSource { get }
@@ -17,18 +17,21 @@ protocol MoviesViewModel {
 
 class MoviesViewController: UIViewController {
 
-    var mainView: MovieCollectionView
+    lazy var mainView: MovieCollectionView = {
+        let view = MovieCollectionView(frame: .zero)
+        view.delegate = self
+        return view
+    }()
 
     var presenter: MoviePresenter?
     var interactor: MovieInteractor?
 
-    init(viewModel: MoviesViewModel) {
+    init(viewModel: MoviesViewModelProtocol) {
         self.presenter = viewModel.presenter
         self.interactor = viewModel.interactor
-        self.mainView = MovieCollectionView(frame: .zero)
-        mainView.dataSource = viewModel.dataSource
         super.init(nibName: nil, bundle: nil)
-        mainView.delegate = self
+        self.presenter?.mainView = self
+        self.mainView.dataSource = viewModel.dataSource
     }
 
     @available(*,unavailable)
@@ -57,10 +60,37 @@ extension MoviesViewController: MovieView {
     }
 }
 
-extension MoviesViewController: UICollectionViewDelegate {
+extension MoviesViewController: UICollectionViewDelegate, UIScrollViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.interactor?.getMovieResume(index: indexPath)
     }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //FAKE infinite scroll
+        if scrollView.contentOffset.y + scrollView.frame.size.height >= scrollView.contentSize.height {
+            self.interactor?.fetchUpcomingMovies()
+        }
+    }
 }
 
+extension MoviesViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width: CGFloat = ((collectionView.bounds.size.width/2) - 10)
+        let height: CGFloat = 320
+        return CGSize(width: width, height: height)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10.0
+    }
+}

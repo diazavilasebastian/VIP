@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import iOSMovieDB
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,7 +20,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navigation = UINavigationController(rootViewController: UIViewController(nibName: nil, bundle: nil))
+        let service = ApiService(apiKey: "6893e0b3a6030f46d850edf87283de46")
+        let movieDataSource = MoviesDataSource()
+        let interactor = MoviesInteractor(provider: MovieProvider(service: service), dataSource: movieDataSource)
+        let presenter = MoviesPresenter()
+
+
+        presenter.interactor = interactor
+        interactor.presenter = presenter
+
+        let movieViewModel = MoviesViewModel(presenter: presenter, interactor: interactor, dataSource: movieDataSource)
+
+        let navigation = UINavigationController(rootViewController: MoviesViewController(viewModel: movieViewModel))
+        navigation.setNavigationBarHidden(true, animated: false)
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene

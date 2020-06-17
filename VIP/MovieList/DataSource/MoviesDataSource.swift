@@ -37,7 +37,10 @@ extension MoviesDataSource: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CEll", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MoviesCollectionCell.identifier, for: indexPath) as! MoviesCollectionCell
+        let movie = movies[indexPath.row]
+        let viewModel = MovieCollectionViewModel(movie: movie)
+        viewModel.configure(cell: cell)
         return cell
     }
 }
