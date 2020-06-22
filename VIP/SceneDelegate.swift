@@ -32,6 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let movieViewModel = MoviesViewModel(presenter: presenter, interactor: interactor, dataSource: movieDataSource)
 
         let navigation = UINavigationController(rootViewController: MoviesViewController(viewModel: movieViewModel))
+        presenter.navigation = navigation
         navigation.setNavigationBarHidden(true, animated: false)
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()

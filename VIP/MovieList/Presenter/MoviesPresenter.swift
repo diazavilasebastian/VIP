@@ -14,6 +14,7 @@ import iOSMovieDB
 class MoviesPresenter: MoviePresenter {
 
     weak var mainView: MovieView?
+    var navigation: UINavigationController?
     var interactor: MovieListInteractorInputDelegate?
 
     func goToDetailMovie(movie: MovieResume) {
@@ -29,7 +30,7 @@ class MoviesPresenter: MoviePresenter {
     }
 
     func successFetchMovie(movie: MovieResume) {
-
+        
     }
 
     func errorFetchMovieSelected() {

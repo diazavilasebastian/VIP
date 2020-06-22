@@ -44,6 +44,7 @@ protocol MovieListInteractorOutputDelegate {
 //successFetchMovies: list of movies come from interactor
 //errorFetchMovies: error type when interctor try get list of movies
 protocol MovieListPresenterInputDelegate: class {
+    var navigation: UINavigationController? { get set }
     func goToDetailMovie(movie: MovieResume)
 }
 
