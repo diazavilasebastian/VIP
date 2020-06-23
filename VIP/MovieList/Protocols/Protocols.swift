@@ -37,6 +37,7 @@ protocol MovieListInteractorInputDelegate: class {
 
 protocol MovieListInteractorOutputDelegate {
     var presenter: MoviePresenter? { get set }
+    var provider: MovieProvider { get set }
 }
 
 //Protocol to movie list presenter

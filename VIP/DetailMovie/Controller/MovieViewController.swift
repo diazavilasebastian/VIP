@@ -30,11 +30,10 @@ class MovieViewController: UIViewController {
     }()
 
     var viewModel: MovieViewModelProtocol
-    var provider: MovieProvider
+    var interactor: InteractorDetailMovie?
 
-    init(viewModel: MovieViewModelProtocol, provider: MovieProvider) {
+    init(viewModel: MovieViewModelProtocol) {
         self.viewModel = viewModel
-        self.provider = provider
         super.init(nibName: nil, bundle: nil)
         viewModel.configure(view: mainView)
     }
@@ -49,7 +48,7 @@ class MovieViewController: UIViewController {
         self.configNavigation()
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.view = mainView
-        fetchMovieDetail()
+        self.interactor?.fetchDetailMovie(idMovie: self.viewModel.idMovie)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,8 +63,14 @@ class MovieViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
 
-    func fetchMovieDetail() {
-        
+}
+
+extension MovieViewController: ViewDetailMovie {
+    func errorFetchMovieDetail(error: Error) {
+//        stop loading
     }
 
+    func refreshMovieDetail(movie: MovieDetailViewModel) {
+        movie.configure(view: self.mainView)
+    }
 }

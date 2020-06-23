@@ -8,14 +8,13 @@
 
 import Foundation
 import iOSMovieDB
-
-
+import SDWebImage
 
 class MoviesPresenter: MoviePresenter {
 
     weak var mainView: MovieView?
     var navigation: UINavigationController?
-    var interactor: MovieListInteractorInputDelegate?
+    var interactor: MovieInteractor?
 
     func goToDetailMovie(movie: MovieResume) {
         //ROUTER navigate to details
@@ -29,13 +28,21 @@ class MoviesPresenter: MoviePresenter {
         self.mainView?.displayError()
     }
 
+    //WIP: need some lyer to resolve dependencys
     func successFetchMovie(movie: MovieResume) {
-        
+        let presenter = MovieDetailPresenter()
+        let interactor = MovieDetailInteractor(provider: self.interactor?.provider)
+        if let image = SDImageCache.shared.imageFromDiskCache(forKey: movie.urlPoster?.absoluteString) {
+            let viewModel = MovieViewModelResumen(movie: movie, image: image)
+            let view = MovieViewController(viewModel: viewModel)
+            presenter.mainView = view
+            view.interactor = interactor
+            interactor.presenter = presenter
+            self.navigation?.show(view, sender: nil)
+        }
     }
 
-    func errorFetchMovieSelected() {
-        
-    }
+    func errorFetchMovieSelected() {}
 
 }
 
