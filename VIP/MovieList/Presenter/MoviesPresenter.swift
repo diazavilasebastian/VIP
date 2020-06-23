@@ -10,11 +10,11 @@ import Foundation
 import iOSMovieDB
 import SDWebImage
 
-class MoviesPresenter: MoviePresenter {
+class MoviesPresenter: MoviesListPresenter {
 
-    weak var mainView: MovieView?
+    weak var mainView: MoviesListView?
     var navigation: UINavigationController?
-    var interactor: MovieInteractor?
+    var interactor: MoviesListInteractor?
 
     func goToDetailMovie(movie: MovieResume) {
         //ROUTER navigate to details

@@ -10,8 +10,8 @@ import UIKit
 import iOSMovieDB
 
 protocol MoviesViewModelProtocol {
-    var presenter: MoviePresenter { get }
-    var interactor: MovieInteractor { get }
+    var presenter: MoviesPresenter { get }
+    var interactor: MoviesInteractor { get }
     var dataSource: MoviesDataSource { get }
 }
 
@@ -23,8 +23,8 @@ class MoviesViewController: UIViewController {
         return view
     }()
 
-    var presenter: MoviePresenter?
-    var interactor: MovieInteractor?
+    var presenter: MoviesListPresenter?
+    var interactor: MoviesListInteractor?
 
     init(viewModel: MoviesViewModelProtocol) {
         self.presenter = viewModel.presenter
@@ -46,7 +46,7 @@ class MoviesViewController: UIViewController {
     }
 }
 
-extension MoviesViewController: MovieView {
+extension MoviesViewController: MoviesListView {
     func MovieSelected(movie: MovieResume) {
         self.presenter?.goToDetailMovie(movie: movie)
     }

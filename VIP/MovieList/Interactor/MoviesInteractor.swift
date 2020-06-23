@@ -10,10 +10,10 @@ import Foundation
 import iOSMovieDB
 
 
-class MoviesInteractor: MovieInteractor {
+class MoviesInteractor: MoviesListInteractor {
 
     var dataSource: MoviesDataSource
-    var presenter: MoviePresenter?
+    var presenter: MoviesListPresenter?
     var provider: MovieProvider
     private var fetchingData: Bool = false
     var page: Int = 1

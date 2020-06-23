@@ -9,7 +9,7 @@
 import Foundation
 
 struct MoviesViewModel: MoviesViewModelProtocol {
-    var presenter: MoviePresenter
-    var interactor: MovieInteractor
+    var presenter: MoviesPresenter
+    var interactor: MoviesInteractor
     var dataSource: MoviesDataSource
 }

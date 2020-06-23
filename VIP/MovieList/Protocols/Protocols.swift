@@ -9,9 +9,9 @@
 import Foundation
 import iOSMovieDB
 
-typealias MoviePresenter = MovieListPresenterInputDelegate & MovieListPresenterOutputDelegate
-typealias MovieInteractor = MovieListInteractorInputDelegate & MovieListInteractorOutputDelegate
-typealias MovieView = MovieListViewInputDelegate & MovieListViewOutputDelegate
+typealias MoviesListPresenter = MovieListPresenterInputDelegate & MovieListPresenterOutputDelegate
+typealias MoviesListInteractor = MovieListInteractorInputDelegate & MovieListInteractorOutputDelegate
+typealias MoviesListView = MovieListViewInputDelegate & MovieListViewOutputDelegate
 
 
 // Protocol to movie list view
@@ -23,8 +23,8 @@ protocol MovieListViewInputDelegate: class {
 }
 
 protocol MovieListViewOutputDelegate {
-    var presenter: MoviePresenter? { get set }
-    var interactor: MovieInteractor? { get set }
+    var presenter: MoviesListPresenter? { get set }
+    var interactor: MoviesListInteractor? { get set }
 }
 
 //Protocol to movie list interctor
@@ -36,7 +36,7 @@ protocol MovieListInteractorInputDelegate: class {
 }
 
 protocol MovieListInteractorOutputDelegate {
-    var presenter: MoviePresenter? { get set }
+    var presenter: MoviesListPresenter? { get set }
     var provider: MovieProvider { get set }
 }
 
@@ -50,7 +50,7 @@ protocol MovieListPresenterInputDelegate: class {
 }
 
 protocol MovieListPresenterOutputDelegate: class {
-    var mainView: MovieView? { get set }
+    var mainView: MoviesListView? { get set }
     func successFetchMovies(movies: [MovieResume])
     func successFetchMovie(movie: MovieResume)
     func errorFetchMovies()
